@@ -190,6 +190,10 @@ EOF
     fi
 EOF_RUN
 
+# 修复骁龙8gen2设备在Wayland的花屏问题
+COPY scripts/enable_tp_ubwc.sh /etc/profile.d/enable_tp_ubwc.sh
+RUN chmod +x /etc/profile.d/enable_tp_ubwc.sh
+
 # 下载并安装 Mesa
 RUN if [ "$ENABLE_mesa_ARG" = "true" ]; then \
         echo "--> [开启] 正在下载并安装最新版 Mesa 驱动..." && \
